@@ -196,6 +196,7 @@ let
     ./programs/pubs.nix
     ./programs/pyenv.nix
     ./programs/pylint.nix
+    ./programs/pyprland.nix
     ./programs/qcal.nix
     ./programs/qutebrowser.nix
     ./programs/ranger.nix
