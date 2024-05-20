@@ -62,7 +62,7 @@ in {
     home = mkMerge [
       { packages = [ cfg.package ]; }
       (mkIf (cfg.config != [ ]) {
-        file."${configPath}".text = tomlFormat.generate "pyprland-config" cfg.config;
+        file."${configPath}".source = tomlFormat.generate "pyprland-config" cfg.config;
       })
     ];
   };
