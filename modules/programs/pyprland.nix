@@ -17,19 +17,14 @@ in {
       package = mkPackageOption pkgs "pyprland" { };
 
       config = mkOption {
-        type = with types;
-        let valueType = nullOr (oneOf [
-          bool
-          int
-          float
-          str
-          path
-          (attrsOf valueType)
-          (attrsOf valueType)
-        ]) // {
-          description = "Pyprland configuration value";
-        };
-        in valueType;
+      type = with types;
+        let
+          prim = either bool (either int str);
+          primOrPrimAttrs = either prim (attrsOf prim);
+          entry = either prim (listOf primOrPrimAttrs);
+          entryOrAttrsOf = t: either entry (attrsOf t);
+          entries = entryOrAttrsOf (entryOrAttrsOf entry);
+        in attrsOf entries // { description = "Starship configuration"; };
 
         default = { };
         description = ''
