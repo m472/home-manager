@@ -4,7 +4,7 @@ with lib;
 
 let
   cfg = config.programs.pyprland;
-  configPath = "${config.xdg.configHome}/hyprland/pyprland.toml";
+  configPath = "${config.xdg.configHome}/hypr/pyprland.toml";
 
   tomlFormat = pkgs.formats.toml { };
 in {
